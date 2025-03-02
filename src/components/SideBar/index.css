@@ -1,0 +1,10 @@
+.sidebar-component {
+  width: 100%;
+}
+
+.side-bar-logo {
+  display: flex;
+  background-color: red;
+  height: 50px;
+  width: 100%;
+}

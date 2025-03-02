@@ -1,0 +1,38 @@
+.main-bar {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 100vh; /* 让整个布局占满屏幕高度 */
+  width: 100vw; /* 让整个布局占满屏幕宽度 */
+}
+
+.content-container{
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  flex: 1; /* 让它填充剩余空间 */
+}
+
+
+.top-bar {
+  display: flex;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: row;
+  width: 13%;
+  background-color: rgb(59, 71, 78);
+  .MuiBox-root{
+    width: 100%;
+  }
+}
+
+.main-card {
+  display: flex;
+  height: 100%;
+  background-color: red;
+  margin: 10px 10px 0 10px;
+}
+
+/*-----------------------*/
