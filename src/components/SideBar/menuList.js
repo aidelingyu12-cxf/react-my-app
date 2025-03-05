@@ -37,7 +37,7 @@ export default [
 						title: '富文本编辑器'
 					},
 					{
-						index: '/sys/markdown',
+						index: '/sys/ueditor',
 						title: 'markdown编辑器'
 					}
 				]

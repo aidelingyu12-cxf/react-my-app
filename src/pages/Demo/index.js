@@ -57,7 +57,7 @@ export default function BasicTextFields() {
         <Button variant="contained">Contained</Button>
 
       </Box>
-      <Paper sx={{ height: 400, width: '100%', height: '100%' }}>
+      <Paper sx={{ width: '100%', height: '100%' }}>
         <DataGrid
           rows={rows}
           columns={columns}

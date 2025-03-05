@@ -14,6 +14,7 @@ import Config from "./pages/Modules/Sys/Config";
 import Log from "./pages/Modules/Sys/Log";
 import Upload from "./pages/Modules/Oss/Oss-upload";
 import Schedule from "./pages/Modules/Job/Schedule";
+import Sql from "./pages/Modules/Sql/Sql";
 import Main from "./pages/Main/Main";
 import Error from "./pages/Common/Error.js";
 
@@ -24,10 +25,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Main />}>
           {/* ✅ 让 Main 组件处理子路由，MainCard 只在 main-card 里显示 */}
-          <Route path="/echarts" element={<Echarts />} />
-          <Route path="/ueditor" element={<Ueditor />} />
+          <Route path="/sys/editor" element={<Echarts />} />
+          <Route path="/sys/ueditor" element={<Ueditor />} />
           <Route path="/sys/user" element={<User />} />
-          <Route path="/sys/role" element={<Role />} />
+          <Route path="/sys/roles" element={<Role />} />
           <Route path="/sys/menu" element={<Menu />} />
           <Route path="/sys/config" element={<Config />} />
           <Route path="/sys/log" element={<Log />} />
@@ -38,6 +39,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/maincard" element={<MainCard />} />
           <Route path="/errors" element={<Error />} />
+          <Route path="/sys/sql" element={<Sql />} />
 
 
         </Route>

@@ -103,7 +103,7 @@ function Page() {
 }
 
 export default function RouterBreadcrumbs() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -129,47 +129,42 @@ export default function RouterBreadcrumbs() {
             menuList.map(item => {
               if (item.subs) {
                 return (
-                  <List>
-                    <ListItemLink key={item.index} to={item.index} open={open} onClick={handleClick} />
-                    <Collapse component="li" in={open} timeout="auto" unmountOnExit>
-                      {
-                        item.subs.map(item => {
-                          if (item.subs) {
-                            return (
-                              <List>
+                  item.subs.map(item => {
+                    if (item.subs) {
+                      <List>
+                        <ListItemLink key={item.index} to={item.index} />
+
+                        <Collapse component="li" in={open} timeout="auto" unmountOnExit>
+                          {
+                            item.subs.map(item => {
+                              <List disablePadding>
                                 <ListItemLink sx={{ pl: 4 }} key={item.index} to={item.index} />
-                                <Collapse component="li" in={open} timeout="auto" unmountOnExit>
-                                  <List>
-                                    <ListItemLink key={item.index} to={item.index} />
-                                  </List>
-                                </Collapse>
                               </List>
-                            )
-                          } else {
-                            return (
-                              <List>
-                                <ListItemLink key={item.index} to={item.index} />
-                              </List>
-                            )
+
+                            })
                           }
+                          <ListItemLink sx={{ pl: 4 }} key={item.index} to={item.index} />
+                        </Collapse>
+                      </List>
+                    } else {
+                      return (
+                        <List>
+                          <ListItemLink key={item.index} to={item.index} />
+                        </List>
+                      )
+                    }
+                  })
 
-
-                        }
-                        )
-                      }
-                    </Collapse>
-                  </List>
                 )
               } else {
                 return (
                   <List>
                     <ListItemLink key={item.index} to={item.index} />
                   </List>
-                )
+
+                );
               }
             })
-
-
           }
         </Box>
       </Box>
