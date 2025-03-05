@@ -1,17 +1,18 @@
+
 export default [
 	{
 		icon: 'anticon-lx-home',
-		index: '/main/dashboard',
+		index: '/dashboard',
 		title: 'Dashboard'
 	},
 	{
 		icon: 'anticon-lx-cascades',
-		index: '/main/demo',
+		index: '/demo',
 		title: '基础表格'
 	},
 	{
 		icon: 'anticon-lx-emoji',
-		index: '/main/icons',
+		index: '/icons',
 		title: '自定义图标'
 	},
 	{
@@ -24,7 +25,7 @@ export default [
 				title: '角色管理'
 			},
 			{
-				index: '/sys/menues',
+				index: '/sys/menu',
 				title: '菜单管理'
 			},
 			{

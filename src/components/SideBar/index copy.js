@@ -93,9 +93,6 @@ export default function RouterBreadcrumbs() {
   return (
 
     <Box className="sidebar-component" initialEntries={['/inbox']} initialIndex={0}>
-      <div className='side-bar-logo'>
-        sss
-      </div>
       <Box sx={{ display: 'flex', flexDirection: 'column', width: 360 }}>
         <Routes>
           <Route path="*" element={<Page />} />
