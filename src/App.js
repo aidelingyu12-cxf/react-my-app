@@ -10,8 +10,8 @@ import Ueditor from "./pages/Demo/Ueditor";
 import User from "./pages/Modules/Sys/User";
 import Role from "./pages/Modules/Sys/Role";
 import Menu from "./pages/Modules/Sys/Menu";
-import Config from "./pages/Modules/Sys/Config";
 import Log from "./pages/Modules/Sys/Log";
+import Config from "./pages/Modules/Sys/Config";
 import Upload from "./pages/Modules/Oss/Oss-upload";
 import Schedule from "./pages/Modules/Job/Schedule";
 import Sql from "./pages/Modules/Sql/Sql";
@@ -32,7 +32,7 @@ function App() {
           <Route path="/sys/menu" element={<Menu />} />
           <Route path="/sys/config" element={<Config />} />
           <Route path="/sys/log" element={<Log />} />
-          <Route path="/oss/upload" element={<Upload />} />
+          {/* <Route path="/oss/upload" element={<Upload />} /> */}
           {/* <Route path="/sql" element={<Sql />} /> */}
           <Route path="/job-schedule" element={<Schedule />} />
           <Route path="/demo" element={<Demo />} />
@@ -40,6 +40,7 @@ function App() {
           <Route path="/maincard" element={<MainCard />} />
           <Route path="/errors" element={<Error />} />
           <Route path="/sys/sql" element={<Sql />} />
+          <Route path="/sys" element={<Config />} />
 
 
         </Route>

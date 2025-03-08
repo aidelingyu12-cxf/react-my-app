@@ -103,15 +103,21 @@ function Page() {
 }
 
 export default function RouterBreadcrumbs() {
-  const [open, setOpen] = React.useState(false);
+  const [openMenus, setOpenMenus] = React.useState({});
 
-  const handleClick = () => {
-    setOpen((prevOpen) => !prevOpen);
+  const handleClick = (key) => {
+    
+    setOpenMenus((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key]
+    }));
   };
+  
+  
 
   return (
 
-    <Box className="sidebar-component" initialEntries={['/inbox']} initialIndex={0}>
+    <Box className="sidebar-component">
       <div className='side-bar-logo'>
         sss
       </div>
@@ -130,17 +136,21 @@ export default function RouterBreadcrumbs() {
               if (item.subs) {
                 return (
                   <List>
-                    <ListItemLink key={item.index} to={item.index} open={open} onClick={handleClick} />
-                    <Collapse component="li" in={open} timeout="auto" unmountOnExit>
+                    <ListItemLink key={item.key} to={item.index} open={openMenus[item.key] || false} onClick={() => handleClick(item.key)} />
+
+                    <Collapse component="li" in={openMenus[item.key] || false} timeout="auto" unmountOnExit>
+
                       {
                         item.subs.map(item => {
                           if (item.subs) {
                             return (
                               <List>
-                                <ListItemLink sx={{ pl: 4 }} key={item.index} to={item.index} />
-                                <Collapse component="li" in={open} timeout="auto" unmountOnExit>
+                                <ListItemLink key={item.key} to={item.index} open={openMenus[item.key] || false} onClick={() => handleClick(item.key)} />
+
+                                <Collapse component="li" in={openMenus[item.key] || false} timeout="auto" unmountOnExit>
+
                                   <List>
-                                    <ListItemLink key={item.index} to={item.index} />
+                                    <ListItemLink key={item.key} to={item.index} />
                                   </List>
                                 </Collapse>
                               </List>
@@ -148,7 +158,7 @@ export default function RouterBreadcrumbs() {
                           } else {
                             return (
                               <List>
-                                <ListItemLink key={item.index} to={item.index} />
+                                <ListItemLink key={item.key} to={item.index} />
                               </List>
                             )
                           }

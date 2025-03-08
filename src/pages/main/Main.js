@@ -8,7 +8,7 @@ import { Route, Routes, Link, Outlet } from "react-router-dom"
 export default function index() {
 
   return (
-    
+
     <div className="main-bar">
       <div className="side-bar">
         <RouterBreadcrumbs></RouterBreadcrumbs>
@@ -19,7 +19,10 @@ export default function index() {
           <ResponsiveAppBar></ResponsiveAppBar>
         </div>
         <div className="main-card">
-          <Outlet />
+          <div className="main-card-content">
+            <Outlet />
+          </div>
+
 
         </div>
 
