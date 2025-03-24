@@ -8,34 +8,32 @@ import Paper from '@mui/material/Paper';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
+  { field: 'name', headerName: 'name', width: 130 },
+  { field: 'mail', headerName: 'mail', width: 180 },
   {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
+    field: 'phone',
+    headerName: 'phone',
+    width: 130,
   },
   {
-    field: 'fullName',
-    headerName: 'Full name',
+    field: 'status',
+    headerName: 'status',
     description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
   },
+  { field: 'createtime', headerName: 'createtime', width: 130 },
+  { field: 'option', headerName: 'option' },
 ];
 
 const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 1, name: 'Snow', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
+  { id: 2, name: 'Lannister', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
+  { id: 3, name: 'Lannister', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
+  { id: 4, name: 'Stark', mail: 'test', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
+  { id: 5, name: 'Targaryen', mail: '', phone: null, status: 1, createtime: '20250202', option: 1 },
+  { id: 6, name: 'Melisandre', mail: null, phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
+  { id: 7, name: 'Clifford', mail: '', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
+  { id: 8, name: 'Frances', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
+  { id: 9, name: 'Roxie', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };
@@ -51,10 +49,10 @@ export default function BasicTextFields() {
         autoComplete="off"
       >
 
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        <Button variant="contained">Contained</Button>
-        <Button variant="contained">Contained</Button>
-        <Button variant="contained">Contained</Button>
+        <TextField id="outlined-basic" label="name" variant="outlined" />
+        <Button variant="contained">search</Button>
+        <Button variant="contained">create</Button>
+        <Button variant="contained">delete</Button>
 
       </Box>
       <Paper sx={{ width: '100%', height: '100%' }}>

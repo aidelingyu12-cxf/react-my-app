@@ -18,6 +18,9 @@ export default function index() {
         <div className="top-bar">
           <ResponsiveAppBar></ResponsiveAppBar>
         </div>
+        <div>
+          teste
+        </div>
         <div className="main-card">
           <div className="main-card-content">
             <Outlet />
