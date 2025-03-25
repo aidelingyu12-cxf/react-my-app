@@ -19,12 +19,12 @@ export default [
 		key: '2',
 		subs: [
 			{
-				index: '/sys/editor',
+				index: '/demo/editor',
 				title: '富文本编辑器',
 				key: '11'
 			},
 			{
-				index: '/sys/ueditor',
+				index: '/demo/ueditor',
 				title: 'markdown编辑器',
 				key: '12'
 			}
@@ -60,7 +60,7 @@ export default [
 				index: '/sys/log',
 				title: '系统日志',
 				key: '5'
-			}, 
+			},
 			{
 				icon: 'anticon-lx-emoji',
 				index: '/icons',
