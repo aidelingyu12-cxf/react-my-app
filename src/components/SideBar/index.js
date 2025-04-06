@@ -1,189 +1,113 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import Link from '@mui/material/Link';
-
-import ListItemButton from '@mui/material/ListItemButton';
-import Collapse from '@mui/material/Collapse';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
+import React, { useState } from 'react';
 import {
-  Link as RouterLink,
-  Route,
-  Routes,
-  MemoryRouter,
-  useLocation,
-} from 'react-router';
-import "./index.css"
-import menuList from "./menuList"
+  AppstoreOutlined,
+  CalendarOutlined,
+  LinkOutlined,
+  MailOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
+import { Divider, Menu, Switch } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import sideItems from "./menuList";
 
-const breadcrumbNameMap = menuList.reduce((acc, item) => {
-  acc[item.index] = item.title;
-  if (item.subs != null) {
-    const sub = item.subs
-    const inneracc = sub.reduce((acc, subitem) => {
-      acc[subitem.index] = subitem.title;
-      return acc;
-    }, {});
-    Object.assign(acc, inneracc);
-  };
+// const items = [
+//   {
+//     key: '1',
+//     icon: <MailOutlined />,
+//     label: 'Navigation One',
+//   },
+//   {
+//     key: '2',
+//     icon: <CalendarOutlined />,
+//     label: 'Navigation Two',
+//   },
+//   {
+//     key: 'sub1',
+//     label: 'Navigation Two',
+//     icon: <AppstoreOutlined />,
+//     children: [
+//       { key: '3', label: 'Option 3' },
+//       { key: '4', label: 'Option 4' },
+//       {
+//         key: 'sub1-2',
+//         label: 'Submenu',
+//         children: [
+//           { key: '5', label: 'Option 5' },
+//           { key: '6', label: 'Option 6' },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     key: 'sub2',
+//     label: 'Navigation Three',
+//     icon: <SettingOutlined />,
+//     children: [
+//       { key: '7', label: 'Option 7' },
+//       { key: '8', label: 'Option 8' },
+//       { key: '9', label: 'Option 9' },
+//       { key: '10', label: 'Option 10' },
+//     ],
+//   },
+//   {
+//     key: 'link',
+//     icon: <LinkOutlined />,
+//     label: (
+//       <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+//         Ant Design
+//       </a>
+//     ),
+//   },
+// ];
 
-  return acc;
-}, {});
-
-
-// const breadcrumbNameMap = {
-//   '/inbox': 'Inbox',
-//   '/inbox/important': 'Important',
-//   '/trash': 'Trash',
-//   '/spam': 'Spam',
-//   '/drafts': 'Drafts',
-//   '/spam111': 'spam111',
-//   '/trashdd': 'trashdd'
-
-// };
-
-function ListItemLink(props) {
-  const { to, open, ...other } = props;
-  const primary = breadcrumbNameMap[to];
-
-  let icon = null;
-  if (open != null) {
-    icon = open ? <ExpandLess /> : <ExpandMore />;
+// 递归查找点击的 key 对应的菜单项
+const findMenuItemByKey = (items, key) => {
+  for (const item of items) {
+    if (item.key === key) return item;
+    if (item.children) {
+      const found = findMenuItemByKey(item.children, key);
+      if (found) return found;
+    }
   }
-
-  return (
-    <li>
-      <ListItemButton component={RouterLink} to={to} {...other} sx={{ '&:hover': { backgroundColor: "rgb(162, 209, 236)" } }}>
-        <ListItemText primary={primary} />
-        {icon}
-      </ListItemButton>
-    </li>
-  );
-}
-
-ListItemLink.propTypes = {
-  open: PropTypes.bool,
-  to: PropTypes.string.isRequired,
+  return null;
 };
 
-function LinkRouter(props) {
-  return <Link {...props} component={RouterLink} />;
-}
+const App = () => {
+  const navigate = useNavigate();
 
-function Page() {
-  const location = useLocation();
-  const pathnames = location.pathname.split('/').filter((x) => x);
-
-  return (
-    <Breadcrumbs aria-label="breadcrumb">
-      <LinkRouter underline="hover" color="inherit" to="/">
-        Home
-      </LinkRouter>
-      {pathnames.map((value, index) => {
-        const last = index === pathnames.length - 1;
-        const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-
-        return last ? (
-          <Typography key={to} sx={{ color: 'text.primary' }}>
-            {breadcrumbNameMap[to]}
-          </Typography>
-        ) : (
-          <LinkRouter underline="hover" color="inherit" to={to} key={to}>
-            {breadcrumbNameMap[to]}
-          </LinkRouter>
-        );
-      })}
-    </Breadcrumbs>
-  );
-}
-
-export default function RouterBreadcrumbs() {
-  const [openMenus, setOpenMenus] = React.useState({});
-
-  const handleClick = (key) => {
-    
-    setOpenMenus((prevState) => ({
-      ...prevState,
-      [key]: !prevState[key]
-    }));
+  const onClick = (e) => {
+    const selectedItem = findMenuItemByKey(sideItems, e.key);
+    if (selectedItem && selectedItem.index) {
+      navigate(selectedItem.index);
+    }
   };
-  
-  
+  const [mode, setMode] = useState('inline');
+  const [theme, setTheme] = useState('dark');
+  const changeMode = value => {
+    setMode(value ? 'vertical' : 'inline');
+  };
+  const changeTheme = value => {
+    setTheme(value ? 'dark' : 'light');
+  };
 
   return (
-
-    <Box className="sidebar-component">
-      <div className='side-bar-logo'>
-        sss
-      </div>
-      <Box sx={{ display: 'flex', flexDirection: 'column', width: 360 }}>
-        <Routes>
-          <Route path="*" element={<Page />} />
-        </Routes>
-        <Box
-          sx={{ bgcolor: 'background.paper', mt: 1 }}
-          component="nav"
-          aria-label="mailbox folders"
-        >
-          {
-
-            menuList.map(item => {
-              if (item.subs) {
-                return (
-                  <List>
-                    <ListItemLink key={item.key} to={item.index} open={openMenus[item.key] || false} onClick={() => handleClick(item.key)} />
-
-                    <Collapse component="li" in={openMenus[item.key] || false} timeout="auto" unmountOnExit>
-
-                      {
-                        item.subs.map(item => {
-                          if (item.subs) {
-                            return (
-                              <List>
-                                <ListItemLink key={item.key} to={item.index} open={openMenus[item.key] || false} onClick={() => handleClick(item.key)} />
-
-                                <Collapse component="li" in={openMenus[item.key] || false} timeout="auto" unmountOnExit>
-
-                                  <List>
-                                    <ListItemLink key={item.key} to={item.index} />
-                                  </List>
-                                </Collapse>
-                              </List>
-                            )
-                          } else {
-                            return (
-                              <List>
-                                <ListItemLink key={item.key} to={item.index} />
-                              </List>
-                            )
-                          }
-
-
-                        }
-                        )
-                      }
-                    </Collapse>
-                  </List>
-                )
-              } else {
-                return (
-                  <List>
-                    <ListItemLink key={item.index} to={item.index} />
-                  </List>
-                )
-              }
-            })
-
-
-          }
-        </Box>
-      </Box>
-
-    </Box>
+    
+    <div className="sideBar-inner">
+      {/* <Switch onChange={changeMode} /> Change Mode
+      <Divider type="vertical" />
+      <Switch onChange={changeTheme} /> Change Style
+      <br />
+      <br /> */}
+      <Menu
+        style={{height: '100%'}}
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        mode={mode}
+        theme={theme}
+        items={sideItems}
+        onClick={onClick}
+      />
+    </div>
   );
-}
+};
+export default App;

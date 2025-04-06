@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from './pages/Main/Main';
 import MainCard from './pages/MainCard/index';
@@ -17,9 +17,31 @@ import Sql from './pages/Modules/Sql/Sql.js'
 
 
 const App = () => {
-    let vas = 1;
+    // 示例: 定义一些状态来模拟用户信息
+    const [user, setUser] = useState(null);
+
+    // 假设你有登录逻辑来设置用户信息
+    useEffect(() => {
+        const loggedInUser = JSON.parse(localStorage.getItem('user'));
+        if (loggedInUser) {
+            setUser(loggedInUser);
+        }
+    }, []);
+
+    const value = {
+        user,
+        login: (userInfo) => {
+            setUser(userInfo);
+            localStorage.setItem('user', JSON.stringify(userInfo));
+        },
+        logout: () => {
+            setUser(null);
+            localStorage.removeItem('user');
+        },
+    };
+
     return (
-        < Auth.Provider value={vas} >
+        < Auth.Provider value={value} >
             <BrowserRouter>
                 <Routes>
                     <Route path="/login" element={<Login />}></Route>

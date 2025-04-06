@@ -1,89 +1,98 @@
 
 export default [
 	{
-		icon: 'anticon-lx-cascades',
+		icon: '主页',
 		index: '/home',
 		title: '主页',
-		key: '18'
-	},
-	{
-		icon: 'anticon-lx-home',
-		index: '/dashboard',
-		title: 'Dashboard',
 		key: '1'
 	},
 	{
-		icon: 'anticon-lx-cascades',
+		icon: 'dashboard',
+		index: '/dashboard',
+		title: 'Dashboard',
+		key: '2'
+	},
+	{
+		icon: '基础表格',
 		index: '/demo',
 		title: '基础表格',
-		key: '2',
-		subs: [
+		key: '3',
+		children: [
 			{
 				index: '/demo/editor',
 				title: '富文本编辑器',
-				key: '11'
+				key: '4',
+				icon: '富文本编辑器',
 			},
 			{
 				index: '/demo/ueditor',
 				title: 'markdown编辑器',
-				key: '12'
+				key: '5',
+				icon: 'markdown编辑器',
 			}
 		]
 	},
 	{
-		icon: 'anticon-lx-calendar',
+		icon: '三级菜单示例',
 		index: '/sys',
 		title: '三级菜单示例',
-		key: '4',
-		subs: [
+		key: '6',
+		children: [
 			{
+				icon: '角色管理',
 				index: '/sys/roles',
 				title: '角色管理',
-				key: '5'
-			},
-			{
-				index: '/sys/menu',
-				title: '菜单管理',
-				key: '6'
-			},
-			{
-				index: '/sys/sql',
-				title: 'SQL监控',
 				key: '7'
 			},
 			{
-				index: '/sys/user',
-				title: '用户管理',
+				icon: '菜单管理',
+				index: '/sys/menu',
+				title: '菜单管理',
 				key: '8'
 			},
 			{
-				index: '/sys/log',
-				title: '系统日志',
-				key: '5'
+				icon: 'SQL监控',
+				index: '/sys/sql',
+				title: 'SQL监控',
+				key: '9'
 			},
 			{
-				icon: 'anticon-lx-emoji',
+				icon: '用户管理',
+				index: '/sys/user',
+				title: '用户管理',
+				key: '10'
+			},
+			{
+				icon: '系统日志',
+				index: '/sys/log',
+				title: '系统日志',
+				key: '11'
+			},
+			{
+				icon: '自定义图标',
 				index: '/icons',
 				title: '自定义图标',
-				key: '3'
+				key: '12'
 			}
 		]
 	},
 	{
-		icon: 'anticon-lx-warn',
+		icon: '错误处理',
 		index: '/errors',
 		title: '错误处理',
-		key: '10',
-		subs: [
+		key: '13',
+		children: [
 			{
+				icon: '权限测试',
 				index: '/main/permission',
 				title: '权限测试',
-				key: '11'
+				key: '14'
 			},
 			{
+				icon: '404页面',
 				index: '/error/404',
 				title: '404页面',
-				key: '12'
+				key: '15'
 			}
 		]
 	}

@@ -10,3 +10,8 @@
   width: 100%;
   margin-bottom: 6px;
 }
+
+.sideBar-inner{
+  display: flex;
+  flex-direction: column;
+}
