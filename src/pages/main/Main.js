@@ -43,6 +43,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import sideItems from "../../components/SideBar/menuList";
 import Panel from "../../components/Panels/index";
+import "./index.css"
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -78,7 +79,7 @@ const App = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout>
+    <Layout className='main-layout'>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
         <Menu
@@ -105,7 +106,7 @@ const App = () => {
         <Content
           style={{
             margin: '24px 16px',
-            padding: 24,
+            padding: "0 24 24 0",
             minHeight: 280,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,

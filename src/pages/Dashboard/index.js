@@ -1,62 +1,133 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid2';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
-import './index.css'
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  ...theme.applyStyles('dark', {
-    backgroundColor: '#1A2027',
-  }),
-}));
-
-export default function OffsetGrid() {
-  return (
-    <Grid container>
-      <Grid container size={{ xs: 5, md: 6 }} direction="column" spacing={1} rowSpacing={1} sx={{ height: '400px' }}>
-        <Grid size={{ xs: 4, md: 12 }} offset={{ xs: 3, md: 0 }} sx={{ height: '200px' }}>
-          <Item sx={{ height: '140px' }}>1</Item>
-        </Grid>
-        <Grid size={{ xs: 4, md: 12 }} offset={{ md: 0 }} sx={{ height: '140px' }}>
-          <Item sx={{ height: '140px' }}>2</Item>
-        </Grid>
-      </Grid>
-      <Grid container size={{ xs: 5, md: 6 }} direction="row" spacing={1} rowSpacing={1} sx={{ flexGrow: 1}}>
-        <Grid container size={{ xs: 5, md: 12 }} spacing={1} rowSpacing={1}>
-          <Grid size={{ xs: 5, md: 4 }} offset={{ md: 0 }} sx={{ height: '100px' }}>
-            <Item sx={{ height: '100px' }}>3</Item>
-          </Grid>
-          <Grid size={{ xs: 6, md: 4 }} offset={{ md: 0 }} sx={{ height: '100px' }}>
-            <Item sx={{ height: '100px' }}>4</Item>
-          </Grid>
-          <Grid size={{ xs: 6, md: 4 }} offset={{ md: 0 }} sx={{ height: '100px' }}>
-            <Item sx={{ height: '100px' }}>5</Item>
-          </Grid>
-          <Grid size={{ xs: 7, md: 12 }} offset={{ md: 0 }} sx={{ height: '100px' }}>
-            <Item sx={{ height: '180px'}}>6</Item>
-          </Grid>
-        </Grid>
-
-
-      </Grid>
-      <Grid container size={{ xs: 5, md: 12 }} direction="row" spacing={1} rowSpacing={1} sx={{ flexGrow: 1, height: '140px' }}>
-        <Grid size={{ xs: 5, md: 6 }} offset={{ md: 0 }} sx={{ height: '100px' }}>
-          <Item sx={{ height: '100px' }}>3</Item>
-        </Grid>
-        <Grid size={{ xs: 6, md: 6 }} offset={{ md: 0 }} sx={{ height: '100px' }}>
-          <Item sx={{ height: '100px' }}>4</Item>
-        </Grid>
-      </Grid>
-    </Grid>
-  );
+import React from 'react';
+import { Card, Progress, Row, Col } from 'antd';
+import styles from "./index"
+const style = { background: '#0092ff', padding: '8px 0' };
+const state = {
+  options1: {
+    type: 'bar',
+    title: {
+      text: '最近一周各品类销售图'
+    },
+    xRorate: 25,
+    labels: ['周一', '周二', '周三', '周四', '周五'],
+    datasets: [
+      {
+        label: '家电',
+        data: [234, 278, 270, 190, 230]
+      },
+      {
+        label: '百货',
+        data: [164, 178, 190, 135, 160]
+      },
+      {
+        label: '食品',
+        data: [144, 198, 150, 235, 120]
+      }
+    ]
+  },
+  options2: {
+    type: 'line',
+    title: {
+      text: '最近几个月各品类销售趋势图'
+    },
+    labels: ['6月', '7月', '8月', '9月', '10月'],
+    datasets: [
+      {
+        label: '家电',
+        data: [234, 278, 270, 190, 230]
+      },
+      {
+        label: '百货',
+        data: [164, 178, 150, 135, 160]
+      },
+      {
+        label: '食品',
+        data: [74, 118, 200, 235, 90]
+      }
+    ]
+  }
 }
+const App = () => (
+  <div>
+    <Row gutter={20} className={styles.mgb20}>
+      <Col span={8}>
+        <Card hoverable className={styles.mgb20} style={{ height: '252px' }}>
+          <div className={styles.userInfo}>
+            <img src={require('../../assets/img/img.jpg')} className={styles.userAvator} alt="" />
+            <div className={styles.userInfoCont}>
+              <div className={styles.userInfoName}>linxin</div>
+              <div>管理员</div>
+            </div>
+          </div>
+          <div className={styles.userInfoList}>上次登录时间：<span>2019-05-20</span></div>
+          <div className={styles.userInfoList}>上次登录地点：<span>广东东莞</span></div>
+        </Card>
+        <Card hoverable style={{ height: '252px' }} title="语言详情">
+          JavaScript
+          <Progress percent={71.3} strokeColor="#42b983" />
+          CSS
+          <Progress percent={33.7} />
+          HTML
+          <Progress percent={79} strokeColor="#f56c6c" />
+        </Card>
+      </Col>
+      <Col span={16}>
+        <Row gutter={20} className={styles.mgb20}>
+          <Col span={8}>
+            <Card hoverable bodyStyle={{ padding: 0 }}>
+              <div className={`${styles.gridContent} ${styles.gridCon1}`}>
+                {/* <IconFont type="anticon-lx-people" className={styles.gridConIcon} /> */}
+                <div className={styles.gridContRight}>
+                  <div className={styles.gridNum}>1234</div>
+                  <div>用户访问量</div>
+                </div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={8}>
+            <Card hoverable bodyStyle={{ padding: 0 }}>
+              <div className={`${styles.gridContent} ${styles.gridCon2}`}>
+                {/* <IconFont type="anticon-lx-notice" className={styles.gridConIcon} /> */}
+                <div className={styles.gridContRight}>
+                  <div className={styles.gridNum}>321</div>
+                  <div>系统消息</div>
+                </div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={8}>
+            <Card hoverable bodyStyle={{ padding: 0 }}>
+              <div className={`${styles.gridContent} ${styles.gridCon3}`}>
+                {/* <IconFont type="anticon-lx-goods" className={styles.gridConIcon} /> */}
+                <div className={styles.gridContRight}>
+                  <div className={styles.gridNum}>5000</div>
+                  <div>数量</div>
+                </div>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+        <Card hoverable style={{ height: '403px' }} title="待办事项" extra={<span>添加</span>}>
+          {/* <DashboardTodo /> */}
+        </Card>
+      </Col>
+    </Row>
+    <Row gutter={20}>
+      <Col span={12}>
+        <Card hoverable>
+          <div style={{ width: '100%', height: '300px' }}>
+            {/* <SCharts ref={ref => this.bar = ref} canvasId="bar" options={this.state.options1} /> */}
+          </div>
+        </Card>
+      </Col>
+      <Col span={12}>
+        <Card hoverable>
+          <div style={{ width: '100%', height: '300px' }}>
+            {/* <SCharts ref={ref => this.line = ref} canvasId="line" options={this.state.options2} /> */}
+          </div>
+        </Card>
+      </Col>
+    </Row>
+  </div>
+);
+export default App;

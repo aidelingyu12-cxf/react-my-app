@@ -1,10 +1,10 @@
-.main-bar{
+/* .main-bar {
   display: flex;
   flex-direction: row;
   height: 100%;
 }
 
-.content-container{
+.content-container {
   display: flex;
   flex: 1;
   background-color: #f1f4f5;
@@ -13,7 +13,8 @@
 .side-bar {
   display: flex;
   width: 13%;
-  div{
+
+  div {
     width: 100%;
   }
 }
@@ -23,18 +24,25 @@
   flex-direction: column;
 }
 
-.top-bar{
+.top-bar {}
 
-}
-
-.main-card{
+.main-card {
   margin: 12px 12px 12px 12px;
   background-color: #fff;
   height: 100%;
   border: 1px solid #ebeef5;
 }
 
-.main-card-content{
+.main-card-content {
   margin: 10px 10px 10px 10px;
   height: 100%;
+
+} */
+
+.main-layout {
+  height: 100%;
+}
+
+.ant-layout-content {
+  padding: 0px;
 }

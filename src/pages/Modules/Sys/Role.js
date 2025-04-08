@@ -1,70 +1,126 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import "./index.css"
-import Button from '@mui/material/Button';
-import { DataGrid } from '@mui/x-data-grid';
-import Paper from '@mui/material/Paper';
-
+import React from 'react';
+import { Table } from 'antd';
+import { createStyles } from 'antd-style';
+import { Input, Button } from 'antd';
+const { Search } = Input;
+const useStyle = createStyles(({ css, token }) => {
+  const { antCls } = token;
+  return {
+    customTable: css`
+      ${antCls}-table {
+        ${antCls}-table-container {
+          ${antCls}-table-body,
+          ${antCls}-table-content {
+            scrollbar-width: thin;
+            scrollbar-color: #eaeaea transparent;
+            scrollbar-gutter: stable;
+          }
+        }
+      }
+    `,
+  };
+});
 const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'name', headerName: 'name', width: 130 },
-  { field: 'mail', headerName: 'mail', width: 180 },
   {
-    field: 'phone',
-    headerName: 'phone',
-    width: 130,
+    title: 'Full Name',
+    width: 100,
+    dataIndex: 'name',
+    key: 'name',
+    fixed: 'left',
   },
   {
-    field: 'status',
-    headerName: 'status',
-    description: 'This column has a value getter and is not sortable.',
+    title: 'Age',
+    width: 100,
+    dataIndex: 'age',
+    key: 'age',
+    fixed: 'left',
   },
-  { field: 'createtime', headerName: 'createtime', width: 130 },
-  { field: 'option', headerName: 'option' },
+  {
+    title: 'Column 1',
+    dataIndex: 'address',
+    key: '1',
+    width: 150,
+  },
+  {
+    title: 'Column 2',
+    dataIndex: 'address',
+    key: '2',
+    width: 150,
+  },
+  {
+    title: 'Column 3',
+    dataIndex: 'address',
+    key: '3',
+    width: 150,
+  },
+  {
+    title: 'Column 4',
+    dataIndex: 'address',
+    key: '4',
+    width: 150,
+  },
+  {
+    title: 'Column 5',
+    dataIndex: 'address',
+    key: '5',
+    width: 150,
+  },
+  {
+    title: 'Column 6',
+    dataIndex: 'address',
+    key: '6',
+    width: 150,
+  },
+  {
+    title: 'Column 7',
+    dataIndex: 'address',
+    key: '7',
+    width: 150,
+  },
+  { title: 'Column 8', dataIndex: 'address', key: '8' },
+  { title: 'Column 9', dataIndex: 'address', key: '9' },
+  { title: 'Column 10', dataIndex: 'address', key: '10' },
+  { title: 'Column 11', dataIndex: 'address', key: '11' },
+  { title: 'Column 12', dataIndex: 'address', key: '12' },
+  { title: 'Column 13', dataIndex: 'address', key: '13' },
+  { title: 'Column 14', dataIndex: 'address', key: '14' },
+  { title: 'Column 15', dataIndex: 'address', key: '15' },
+  { title: 'Column 16', dataIndex: 'address', key: '16' },
+  { title: 'Column 17', dataIndex: 'address', key: '17' },
+  { title: 'Column 18', dataIndex: 'address', key: '18' },
+  { title: 'Column 19', dataIndex: 'address', key: '19' },
+  { title: 'Column 20', dataIndex: 'address', key: '20' },
+  {
+    title: 'Action',
+    key: 'operation',
+    fixed: 'right',
+    width: 100,
+    render: () => <a>action</a>,
+  },
 ];
-
-const rows = [
-  { id: 1, name: 'Snow', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-  { id: 2, name: 'Lannister', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-  { id: 3, name: 'Lannister', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-  { id: 4, name: 'Stark', mail: 'test', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-  { id: 5, name: 'Targaryen', mail: '', phone: null, status: 1, createtime: '20250202', option: 1 },
-  { id: 6, name: 'Melisandre', mail: null, phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-  { id: 7, name: 'Clifford', mail: '', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-  { id: 8, name: 'Frances', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-  { id: 9, name: 'Roxie', mail: 'root@ecshop.com', phone: 18962564312, status: 1, createtime: '20250202', option: 1 },
-];
-
-const paginationModel = { page: 0, pageSize: 5 };
-
-export default function BasicTextFields() {
+const dataSource = Array.from({ length: 100 }).map((_, i) => ({
+  key: i,
+  name: `Edward King ${i}`,
+  age: 32,
+  address: `London, Park Lane no. ${i}`,
+}));
+const App = () => {
+  const { styles } = useStyle();
   return (
+    <div>
+      <div>
+      <Search placeholder="input search text" enterButton="Search" size="large" loading />
+          <Button type="primary">Primary Button</Button>
+          <Button type="primary">Primary Button</Button>
+      </div>
 
-    <div className='card-div'>
-      <Box
-        component="form"
-        sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-        noValidate
-        autoComplete="off"
-      >
-
-        <TextField id="outlined-basic" label="name" variant="outlined" />
-        <Button variant="contained">search</Button>
-        <Button variant="contained">create</Button>
-        <Button variant="contained">delete</Button>
-
-      </Box>
-      <Paper sx={{ width: '100%', height: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{ pagination: { paginationModel } }}
-          pageSizeOptions={[5, 10]}
-          checkboxSelection
-          sx={{ border: 0, width: '100%' }}
-        />
-      </Paper>
+    <Table
+      className={styles.customTable}
+      columns={columns}
+      dataSource={dataSource}
+      scroll={{ x: 'max-content', y: 55 * 5 }}
+    />
     </div>
   );
-}
+};
+export default App;
