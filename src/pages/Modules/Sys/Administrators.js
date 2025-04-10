@@ -3,7 +3,7 @@ import { Table } from 'antd';
 import { createStyles } from 'antd-style';
 import { Input, Button } from 'antd';
 import "./index.css"
-// const { Search } = Input;
+const { Search } = Input;
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -30,32 +30,32 @@ const columns = [
     fixed: 'left',
   },
   {
-    title: 'BeanName',
+    title: 'Name',
     dataIndex: 'address',
     key: '1',
     width: 150,
   },
   {
-    title: 'Parameters',
+    title: 'Email',
     width: 100,
     dataIndex: 'age',
     key: 'age',
     fixed: 'left',
   },
   {
-    title: 'Cron expression',
+    title: 'Phone',
     dataIndex: 'address',
     key: '2',
     width: 150,
   },
   {
-    title: 'Remarks',
+    title: 'Status',
     dataIndex: 'address',
     key: '3',
     width: 150,
   },
   {
-    title: 'Status',
+    title: 'Create time',
     dataIndex: 'address',
     key: '4',
     width: 150,
@@ -90,10 +90,6 @@ const App = () => {
     <div>
       <div className='search-bar'>
         <Input className='role-search' placeholder="Basic usage" />
-        <Button className='search-bar-child' type="primary">Primary Button</Button>
-        <Button className='search-bar-child' type="primary">Primary Button</Button>
-        <Button className='search-bar-child' type="primary">Primary Button</Button>
-        <Button className='search-bar-child' type="primary">Primary Button</Button>
         <Button className='search-bar-child' type="primary">Primary Button</Button>
         <Button className='search-bar-child' type="primary">Primary Button</Button>
         <Button className='search-bar-child' type="primary">Primary Button</Button>

@@ -46,10 +46,7 @@ import Panel from "../../components/Panels/index";
 import "./index.css"
 import {
   MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
+  MenuUnfoldOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
@@ -81,7 +78,7 @@ const App = () => {
   return (
     <Layout className='main-layout'>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <div className="demo-logo-vertical" style={{height:64}}/>
         <Menu
           theme="dark"
           mode="inline"
@@ -106,7 +103,8 @@ const App = () => {
         <Content
           style={{
             margin: '24px 16px',
-            padding: "0 24 24 0",
+            // padding: "24 24 24 0",
+            padding: 24,
             minHeight: 280,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,

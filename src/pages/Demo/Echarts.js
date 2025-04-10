@@ -1,11 +1,25 @@
-import React from 'react'
-import "./index.css"
+import React from 'react';
+import { Line } from '@ant-design/charts';
 
-export default function Demo() {
-  return (
-    <div>
-      <h2>Echarts 内容</h2>
-      <p>这是 `Echarts` 组件的内容，它会在 `main-card` 区域显示，而不会刷新整个页面。</p>
-    </div>
-  );
-}
+const Page: React.FC = () => {
+  const data = [
+    { year: '1991', value: 3 },
+    { year: '1992', value: 4 },
+    { year: '1993', value: 3.5 },
+    { year: '1994', value: 5 },
+    { year: '1995', value: 4.9 },
+    { year: '1996', value: 6 },
+    { year: '1997', value: 7 },
+    { year: '1998', value: 9 },
+    { year: '1999', value: 13 },
+  ];
+
+  const config = {
+    data,
+    height: 400,
+    xField: 'year',
+    yField: 'value',
+  };
+  return <Line {...config} />;
+};
+export default Page;

@@ -39,27 +39,27 @@ export default [
 		key: '6',
 		children: [
 			{
+				icon: '管理员列表',
+				index: '/sys/user',
+				title: '管理员列表',
+				key: '7'
+			},
+			{
 				icon: '角色管理',
 				index: '/sys/roles',
 				title: '角色管理',
-				key: '7'
+				key: '8'
 			},
 			{
 				icon: '菜单管理',
 				index: '/sys/menu',
 				title: '菜单管理',
-				key: '8'
+				key: '9'
 			},
 			{
 				icon: 'SQL监控',
 				index: '/sys/sql',
 				title: 'SQL监控',
-				key: '9'
-			},
-			{
-				icon: '用户管理',
-				index: '/sys/user',
-				title: '用户管理',
 				key: '10'
 			},
 			{
@@ -70,9 +70,16 @@ export default [
 			},
 			{
 				icon: '自定义图标',
-				index: '/icons',
+				index: '/sys/icons',
 				title: '自定义图标',
 				key: '12'
+			}
+			,
+			{
+				icon: '定时任务',
+				index: '/sys/jobs',
+				title: '自定义图标',
+				key: '13'
 			}
 		]
 	},
@@ -80,19 +87,19 @@ export default [
 		icon: '错误处理',
 		index: '/errors',
 		title: '错误处理',
-		key: '13',
+		key: '14',
 		children: [
 			{
 				icon: '权限测试',
 				index: '/main/permission',
 				title: '权限测试',
-				key: '14'
+				key: '15'
 			},
 			{
 				icon: '404页面',
 				index: '/error/404',
 				title: '404页面',
-				key: '15'
+				key: '16'
 			}
 		]
 	}

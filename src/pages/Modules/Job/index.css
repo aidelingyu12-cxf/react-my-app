@@ -5,10 +5,11 @@
 }
 
 .role-search{
-  width: 500px;
+  width: 200px;
 }
 
 .search-bar-child{
+  width: 80px;
   margin-left: 30px;
 }
 

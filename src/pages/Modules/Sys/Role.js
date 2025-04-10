@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table } from 'antd';
 import { createStyles } from 'antd-style';
 import { Input, Button } from 'antd';
-const { Search } = Input;
+import "./index.css"
+// const { Search } = Input;
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -22,76 +23,45 @@ const useStyle = createStyles(({ css, token }) => {
 });
 const columns = [
   {
-    title: 'Full Name',
+    title: 'ID',
     width: 100,
     dataIndex: 'name',
     key: 'name',
     fixed: 'left',
   },
   {
-    title: 'Age',
+    title: 'Name',
+    dataIndex: 'address',
+    key: '1',
+    width: 150,
+  },
+  {
+    title: 'Email',
     width: 100,
     dataIndex: 'age',
     key: 'age',
     fixed: 'left',
   },
   {
-    title: 'Column 1',
-    dataIndex: 'address',
-    key: '1',
-    width: 150,
-  },
-  {
-    title: 'Column 2',
+    title: 'Phone',
     dataIndex: 'address',
     key: '2',
     width: 150,
   },
   {
-    title: 'Column 3',
+    title: 'Status',
     dataIndex: 'address',
     key: '3',
     width: 150,
   },
   {
-    title: 'Column 4',
+    title: 'Create time',
     dataIndex: 'address',
     key: '4',
     width: 150,
   },
   {
-    title: 'Column 5',
-    dataIndex: 'address',
-    key: '5',
-    width: 150,
-  },
-  {
-    title: 'Column 6',
-    dataIndex: 'address',
-    key: '6',
-    width: 150,
-  },
-  {
-    title: 'Column 7',
-    dataIndex: 'address',
-    key: '7',
-    width: 150,
-  },
-  { title: 'Column 8', dataIndex: 'address', key: '8' },
-  { title: 'Column 9', dataIndex: 'address', key: '9' },
-  { title: 'Column 10', dataIndex: 'address', key: '10' },
-  { title: 'Column 11', dataIndex: 'address', key: '11' },
-  { title: 'Column 12', dataIndex: 'address', key: '12' },
-  { title: 'Column 13', dataIndex: 'address', key: '13' },
-  { title: 'Column 14', dataIndex: 'address', key: '14' },
-  { title: 'Column 15', dataIndex: 'address', key: '15' },
-  { title: 'Column 16', dataIndex: 'address', key: '16' },
-  { title: 'Column 17', dataIndex: 'address', key: '17' },
-  { title: 'Column 18', dataIndex: 'address', key: '18' },
-  { title: 'Column 19', dataIndex: 'address', key: '19' },
-  { title: 'Column 20', dataIndex: 'address', key: '20' },
-  {
-    title: 'Action',
+    title: 'Option',
     key: 'operation',
     fixed: 'right',
     width: 100,
@@ -104,22 +74,35 @@ const dataSource = Array.from({ length: 100 }).map((_, i) => ({
   age: 32,
   address: `London, Park Lane no. ${i}`,
 }));
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  },
+  getCheckboxProps: record => ({
+    disabled: record.name === 'Disabled User', // Column configuration not to be checked
+    name: record.name,
+  }),
+};
 const App = () => {
+  const [selectionType] = useState('checkbox');
   const { styles } = useStyle();
   return (
     <div>
-      <div>
-      <Search placeholder="input search text" enterButton="Search" size="large" loading />
-          <Button type="primary">Primary Button</Button>
-          <Button type="primary">Primary Button</Button>
+      <div className='search-bar'>
+        <Input className='role-search' placeholder="Basic usage" />
+        <Button className='search-bar-child' type="primary">Primary Button</Button>
+        <Button className='search-bar-child' type="primary">Primary Button</Button>
+        <Button className='search-bar-child' type="primary">Primary Button</Button>
       </div>
 
-    <Table
-      className={styles.customTable}
-      columns={columns}
-      dataSource={dataSource}
-      scroll={{ x: 'max-content', y: 55 * 5 }}
-    />
+      <Table
+        bordered
+        rowSelection={Object.assign({ type: selectionType }, rowSelection)}
+        className={styles.customTable}
+        columns={columns}
+        dataSource={dataSource}
+        scroll={{ x: 'max-content', y: 70 * 5 }}
+      />
     </div>
   );
 };
